@@ -12,25 +12,25 @@
     <properties>
         <java.version>21</java.version>
         <resource.delimiter>${}</resource.delimiter>
-        <database.jdbc.url>127.0.0.1:3306</database.jdbc.url>
+        <database.jdbc.url>/projects/my-project/instances/my-instance</database.jdbc.url>
         <database.name>springboot_dev</database.name>
         <database.username>root</database.username>
         <database.password>123456</database.password>
-        <database.driver>com.mysql.cj.jdbc.Driver</database.driver>
-        <database.platform>com.springboot.project.common.database.CustomMySQLDialect</database.platform>
+        <database.driver>com.google.cloud.spanner.jdbc.JdbcDriver</database.driver>
+        <database.platform>com.springboot.project.common.database.CustomSpannerDialect</database.platform>
         <storage.cloud.aliyun.enabled>false</storage.cloud.aliyun.enabled>
         <storage.cloud.aliyun.endpoint></storage.cloud.aliyun.endpoint>
         <storage.cloud.aliyun.bucketName></storage.cloud.aliyun.bucketName>
         <storage.cloud.aliyun.accessKeyId></storage.cloud.aliyun.accessKeyId>
         <storage.cloud.aliyun.accessKeySecret></storage.cloud.aliyun.accessKeySecret>
-        <database.spring.jpa.hibernate.ddl.auto>validate</database.spring.jpa.hibernate.ddl.auto>
-        <database.spring.liquibase.enabled>true</database.spring.liquibase.enabled>
+        <database.spring.jpa.hibernate.ddl.auto>update</database.spring.jpa.hibernate.ddl.auto>
+        <database.spring.liquibase.enabled>false</database.spring.liquibase.enabled>
         <database.spring.datasource.url>
-            jdbc:mysql://${database.jdbc.url}/${database.name}?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true
+            jdbc:cloudspanner:${database.jdbc.url}/databases/${database.name};autocommit=false;autoConfigEmulator=true;usePlainText=true;lenient=true
         </database.spring.datasource.url>
         <database.sql.maven.plugin.url>${database.spring.datasource.url}</database.sql.maven.plugin.url>
         <database.liquibase.maven.plugin.reference.url>
-            jdbc:mysql://${database.jdbc.url}/${env.LIQUIBASE_REFERENCE_DATABASE_NAME}?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true
+            jdbc:cloudspanner:${database.jdbc.url}/databases/${env.LIQUIBASE_REFERENCE_DATABASE_NAME};autocommit=false;autoConfigEmulator=true;usePlainText=true;lenient=true
         </database.liquibase.maven.plugin.reference.url>
         <is.development.mock.mode>true</is.development.mock.mode>
         <google-cloud-spanner-jdbc.version>2.26.0</google-cloud-spanner-jdbc.version>
