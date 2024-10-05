@@ -6,7 +6,10 @@ Projects created by start.spring.io contain Spring Boot, a framework that makes 
 1. From https://adoptium.net install java v21, and choose Entire feature.<br/>
 2. From https://code.visualstudio.com install Visual Studio Code.<br/>
    Next, install extension "XML" and "Extension Pack for Java".<br/>
-3. From https://dev.mysql.com/downloads/installer install MySQL, the password of the root user is set to 123456.<br/>
+3. From https://www.docker.com install docker. Next, run the command:<br/>
+
+   docker run -d -p 26257:26257 cockroachdb/cockroach start-single-node --insecure --listen-addr=:26257
+
 4. Optional.<br/>
    From https://dbeaver.io install DBeaver.<br/>
 
